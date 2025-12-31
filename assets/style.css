@@ -10,7 +10,7 @@ body {
 
 /* Misc styling */
 .grafitti {
-  background-image: url("./assets/images/grafitti1.jpg") !important;
+  background-image: url("./images/grafitti1.jpg") !important;
   background-position: right -100px bottom 500px;
   background-size: 150%;
   background-blend-mode: multiply;
