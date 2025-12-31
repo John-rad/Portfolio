@@ -1,0 +1,65 @@
+/* 1. Refined Keyframes (Intro only) */
+@keyframes outlineSoftFlow {
+  0% {
+    outline: 2px dashed #38ef7d;
+    outline-offset: 3px;
+    transform: scale(1);
+  }
+  40% {
+    outline-offset: 10px;
+    outline-color: #38ef7d;
+    box-shadow: 0 0 15px 2px rgba(56, 239, 125, 0.3);
+    transform: scale(1.03);
+  }
+  100% {
+    outline-offset: 0px; /* Changed from -15px to 0 to prevent inner clipping */
+    outline-color: transparent;
+    transform: scale(1.05) translate3d(-3px, -3px, 0);
+    background: linear-gradient(to bottom, #38ef7d, #11998e);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* 2. Base Styles (All Themes) */
+.outline-btn {
+  display: inline-block;
+}
+
+.outline-btn a {
+  display: inline-block;
+  --bs-text-opacity: 1;
+  backface-visibility: hidden;
+  color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity));
+  will-change: background-color, color;
+}
+
+/* 3. Dark Mode Specifics */
+[data-bs-theme="dark"] .outline-btn {
+  perspective: 1000px; /* Adds depth for translate3d */
+}
+
+[data-bs-theme="dark"] .outline-btn a {
+  padding: 0.5rem 1.5rem; /* Ensure enough hit area */
+  outline: 2px dashed transparent;
+  outline-offset: 3px;
+  will-change: transform, outline-offset, background-color, color;
+  /* border-radius: 8px; */
+  /* The "Return" Transition: Handles the exit state smoothly */
+  transition: transform 0.4s ease, background-image 0.4s ease, outline 0.3s ease,
+    outline-offset 0.3s ease, box-shadow 0.4s ease, color 0.3s ease;
+}
+
+/* Hover State */
+[data-bs-theme="dark"] .outline-btn:hover a {
+  animation: outlineSoftFlow 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Active/Press State */
+[data-bs-theme="dark"] .outline-btn:active a {
+  /* Override animation with a quick transform */
+  animation: none;
+  transform: scale(0.98) translate3d(-1px, -1px, 0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease;
+}

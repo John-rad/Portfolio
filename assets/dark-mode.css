@@ -1,0 +1,98 @@
+/* Dark mode adjustment */
+[data-bs-theme="dark"] body {
+  background-color: black !important;
+}
+
+[data-bs-theme="dark"] #footer {
+  background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(0, 0, 0, 0.15) 100%
+    ),
+    radial-gradient(
+        at top center,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(0, 0, 0, 0.4) 120%
+      )
+      #989898;
+  background-blend-mode: multiply, multiply;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+[data-bs-theme="dark"] #special-btn {
+  background-color: #fff !important;
+
+  & a {
+    color: rgb(0, 0, 0) !important;
+  }
+
+  a::before {
+    /* background: rgba(226, 179, 179, 0.801); */
+    transition: opacity 0.7s ease, color 0.8s ease, transform 0.4s ease;
+  }
+
+  a.swipe-active::before {
+    background: linear-gradient(0deg, transparent, transparent 30%, #f9748f79);
+    transform: rotate(-45deg) translateY(114%);
+    transition: all 0.41s ease-in-out;
+  }
+}
+
+[data-bs-theme="dark"] {
+  .outline-btn:has(a:focus-visible) {
+    transform: scale(1.2) translate3d(4px, -4px, -1px);
+    a {
+      outline: 0;
+    }
+  }
+}
+
+[data-bs-theme="dark"] #footer .icon-fix {
+  /* Performance: Only transition specific properties */
+  will-change: transform, box-shadow, background-color;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    /* Bouncy entrance */ box-shadow 0.3s ease, background-color 0.3s ease;
+
+  background-color: rgba(170, 170, 170, 0.1);
+  border-radius: calc(var(--border-radius-btn) * 2);
+
+  /* Initial state: scale 1 is usually safer to prevent blur */
+  transform: scale(0.8) translate3d(0, 0, 0);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+[data-bs-theme="dark"] #footer .icon-fix svg {
+  will-change: color;
+  transition: color 0.3s ease;
+}
+
+/* Hover State */
+[data-bs-theme="dark"] #footer .icon-fix:hover {
+  /* Smoother lift using translate3d */
+  transform: scale(0.9) translate3d(4px, -4px, 10px);
+  background-color: rgba(170, 170, 170, 0.25);
+  box-shadow: 0 10px 20px -5px rgba(56, 239, 125, 0.4);
+
+  svg {
+    color: #38ef7d;
+  }
+}
+
+/* Focus State */
+[data-bs-theme="dark"] #footer .icon-fix:has(a:focus-visible) {
+  transform: scale(0.9) translate3d(4px, -4px, 10px);
+
+  svg {
+    color: #38ef7d;
+  }
+}
+
+/* Click/Active State for better UX */
+[data-bs-theme="dark"] #footer .icon-fix:active {
+  transform: scale(0.85) translate3d(2px, -2px, 0);
+  transition: transform 0.1s ease;
+}

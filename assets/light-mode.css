@@ -1,0 +1,129 @@
+/* Light mode adjustment */
+[data-bs-theme="light"] footer {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+[data-bs-theme="light"] .icon-fix:not(footer .icon-fix) {
+  overflow: hidden;
+  position: relative;
+}
+
+[data-bs-theme="light"] .icon-fix::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -57%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent 30%,
+    rgba(255, 255, 255, 0.2)
+  );
+  transform: rotate(-45deg);
+  transition: all 0s; /* Handle to control the glint-swipe animation exit */
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+[data-bs-theme="light"] .icon-fix:not(footer .icon-fix)::before {
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent 30%,
+    rgba(255, 255, 255, 0.514)
+  );
+}
+
+[data-bs-theme="light"] {
+  .icon-fix:not(footer .icon-fix):has(a:focus-visible),
+  .outline-btn:hover {
+    & a {
+      color: #38ef7d;
+      background-color: #121212 !important;
+      transition: all 0.8s ease-in-out;
+    }
+  }
+}
+
+[data-bs-theme="light"] .icon-fix.swipe-active::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(107%);
+  transition: all 0.8s cubic-bezier(0.53, 0.11, 0.07, 0.1); /* Handle to control the glint-swipe animation entrance */
+}
+
+[data-bs-theme="light"] footer .icon-fix {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-radius: calc(var(--border-radius-btn) * 2);
+  border: none;
+  will-change: box-shadow, transform;
+  transform: scale(0.8);
+  box-shadow: 
+    /* 1. NEW: Top 'Reflection' Edge (Light hitting the top) */ rgba(
+        255,
+        255,
+        255,
+        0.1
+      )
+      0px 2px 4px 0px inset,
+    /* 2. Internal 'Ink' Depth (Bottom-up) */ rgba(0, 0, 0, 0.2) 0px -6px 10px 0px
+      inset,
+    rgba(0, 0, 0, 0.15) 0px -12px 15px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -25px 20px 0px inset,
+    /* 3. External 'Lift' Shadows */ rgba(0, 0, 0, 0.12) 0px 2px 2px,
+    rgba(0, 0, 0, 0.12) 0px 4px 4px, rgba(0, 0, 0, 0.12) 0px 8px 8px,
+    rgba(0, 0, 0, 0.12) 0px 16px 16px;
+
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Hover State */
+[data-bs-theme="light"] footer .icon-fix:hover {
+  transform: translateY(-5px); /* Lift slightly higher */
+  background: rgba(255, 255, 255, 0.08); /* Minimal brightening */
+
+  box-shadow: 
+    /* Brighter top edge on hover */ rgba(255, 255, 255, 0.2) 0px
+      2px 6px 0px inset,
+    /* Deeper internal ink */ rgba(0, 0, 0, 0.3) 0px -8px 12px 0px inset,
+    rgba(0, 0, 0, 0.25) 0px -20px 25px 0px inset,
+    /* Larger external drop shadow */ rgba(0, 0, 0, 0.2) 0px 15px 25px,
+    rgba(0, 0, 0, 0.15) 0px 20px 35px;
+}
+
+[data-bs-theme="light"] #projects .col:hover a > div::before {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* Focus State */
+[data-bs-theme="light"] footer {
+  .icon-fix:has(a:focus-visible) {
+    /* 1. Push the button 'down' into the page */
+    transform: translateY(2px) scale(0.98);
+
+    /* 2. Shorten the external shadows as the button gets closer to the 'ground' */
+    box-shadow: 
+    /* Keep the top reflection but dim it slightly */ rgba(
+          255,
+          255,
+          255,
+          0.05
+        )
+        0px 1px 2px 0px inset,
+      /* Internal 'Ink' Depth becomes shallower */ rgba(0, 0, 0, 0.2) 0px -3px 5px
+        0px inset,
+      rgba(0, 0, 0, 0.15) 0px -6px 8px 0px inset,
+      /* External shadows shrink and get darker/tighter */ rgba(0, 0, 0, 0.2)
+        0px 2px 4px,
+      rgba(0, 0, 0, 0.2) 0px 4px 8px;
+
+    /* 3. Speed up the transition for an instant click response */
+    transition: all 0.1s ease-out;
+  }
+
+  a {
+    outline: 0;
+  }
+}

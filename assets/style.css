@@ -1,0 +1,223 @@
+:root {
+  --border-radius-btn: 10px;
+  --corner-shape-btn: squircle;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Misc styling */
+.grafitti {
+  background-image: url("/assets/images/grafitti1.jpg") !important;
+  background-position: right -100px bottom 500px;
+  background-size: 150%;
+  background-blend-mode: multiply;
+}
+
+.indie-flower-regular {
+  font-family: "Indie Flower", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.text-yellow {
+  color: #dfff00 !important;
+}
+
+/* Nav-bar styling */
+nav {
+  height: 80%;
+}
+
+#nav-bar {
+  list-style: none;
+  list-style-type: none;
+  margin: 0;
+  height: 100%;
+  padding-left: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header > div {
+  height: 100px;
+}
+
+.btn-style {
+  text-decoration: none;
+  border-radius: var(--border-radius-btn);
+  font-weight: bold;
+  corner-shape: var(--corner-shape-btn);
+}
+
+.btn-style a {
+  text-decoration: none;
+}
+
+#nav-bar li {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.backdrop {
+  padding: 24px 50px;
+  position: absolute;
+  z-index: -1;
+  /* Pop-out effect */
+  /* padding-top: 4px; */
+  border-radius: var(--border-radius-btn);
+  corner-shape: var(--corner-shape-btn);
+  background: #11998e; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #38ef7d,
+    #11998e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #38ef7d,
+    #11998e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  transition: all 0.7s ease;
+  will-change: box-shadow;
+}
+
+#special-btn a {
+  outline: 0;
+}
+
+#special-btn a::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -57%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent 30%,
+    rgba(0, 255, 255, 0.3)
+  );
+  transform: rotate(-45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+  will-change: transform, opacity, color;
+}
+
+#special-btn a.swipe-active::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(120%);
+}
+
+.backdrop-hvr {
+  background: #fd868c; /* fallback for old browsers */
+
+  background: -webkit-linear-gradient(
+    to right,
+    #f78ca0 0%,
+    #f9748f 19%,
+    #fd868c 60%,
+    #fe9a8b 100%
+  ) !important; /* Chrome 10-25, Safari 5.1-6 */
+
+  background: linear-gradient(
+    to right,
+    #f78ca0 0%,
+    #f9748f 19%,
+    #fd868c 60%,
+    #fe9a8b 100%
+  ) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  transform: scale(1.05);
+
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -6px 6px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -9px 8px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -20px 10px 0px inset,
+    rgba(0, 0, 0, 0.06) 0px 0.5px 1px, rgba(0, 0, 0, 0.09) 0px 1px 0.5px,
+    rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px;
+}
+
+#special-btn {
+  position: relative;
+  overflow: hidden;
+  height: 50%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  & span {
+    text-wrap: nowrap;
+  }
+}
+
+/* Qualifications section styling */
+.project-icon {
+  width: 1.75em;
+  height: 1.75em;
+}
+
+.project-icon-i {
+  width: 2em;
+  height: 2em;
+}
+
+/* Projects section styling */
+.card-bg {
+  background-size: cover;
+}
+
+/* Footer styling */
+#hire {
+  height: 100%;
+}
+
+footer {
+  background-color: rgb(209, 237, 238);
+  height: 400px;
+  border-radius: 20px;
+  corner-shape: squircle;
+}
+
+#icons,
+#hire {
+  height: 100%;
+}
+
+#icons svg {
+  color: rgb(59, 121, 51);
+  width: 20px;
+  height: 20px;
+  transform: scale(2);
+  /* transform: translateY(25%); */
+
+  /* position: relative; */
+}
+
+footer .icon-fix {
+  height: calc(50% - 50px);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#icons a {
+  /* display: contents; */
+  height: 50%;
+  text-decoration: none;
+  color: inherit;
+  outline: 0;
+
+  & span {
+    height: 100%;
+  }
+}
